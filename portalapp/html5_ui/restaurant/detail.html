@@ -1,0 +1,61 @@
+{% extends 'core/layouts/base.html' %}
+
+{% block title %} Restaurant {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <!-- Header -->
+    <div class="header bg-primary">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0"><a href="{% url 'restaurants-home' %}">Restaurant</a></h6>
+              
+            </div>
+            <div class="col-lg-6 col-5 text-right">
+              
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- Page content -->
+    <div class="container-fluid mt-3">
+      <div class="row">
+        <div class="col-xl-8">
+          <article>
+		    <div class="mb-3">
+		        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'restaurants-update' object.id %}">Update</a>
+		        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'restaurants-delete' object.id %}">Delete</a>
+		    </div>
+            <h2>{{object.name}}</h2>
+            <p>
+                {{object.description}}
+            </p>
+          </article>
+        </div>
+        <div class="col-xl-4">
+          
+        </div>
+      </div>
+      
+
+      {% include "core/includes/footer/footer.html" %}
+
+    </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}
+
+  <script src="/static/core/assets/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="/static/core/assets/vendor/chart.js/dist/Chart.extension.js"></script>
+
+{% endblock javascripts %}

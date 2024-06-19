@@ -1,0 +1,65 @@
+{% extends 'core/layouts/base.html' %}
+
+{% block title %} Restaurant {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <!-- Header -->
+    <div class="header bg-primary">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0"><a href="{% url 'restaurants-home' %}">Restaurant</a></h6>
+              
+            </div>
+            <div class="col-lg-6 col-5 text-right">
+              
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- Page content -->
+    <div class="container-fluid mt-3">
+      <div class="row">
+        <div class="col-xl-8">
+          {% for restaurant in restaurants %}
+          <article>
+            <h3>
+              <a href="{% url 'restaurants-detail' restaurant.id %}">{{restaurant.name}}</a>
+            </h3>
+            <p>
+              {{restaurant.description}}
+            </p>
+          </article>
+          {% endfor %}
+
+          <div class="mt-5">
+            <a class="btn btn-primary btn-sm" href="{% url 'restaurants-create' %}">Add Restaurant</a>
+          </div>
+        </div>
+        <div class="col-xl-4">
+          
+        </div>
+      </div>
+      
+
+      {% include "core/includes/footer/footer.html" %}
+
+    </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}
+
+  <script src="/static/core/assets/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="/static/core/assets/vendor/chart.js/dist/Chart.extension.js"></script>
+
+{% endblock javascripts %}
